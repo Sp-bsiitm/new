@@ -1,0 +1,23 @@
+name: Scrape and Sum Table Numbers
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  sum-tables:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright
+        run: npm install playwright
+
+      - name: "Run Playwright sum script (24f1001384@ds.study.iitm.ac.in)"
+        run: node scripts/scrape_and_sum.js
